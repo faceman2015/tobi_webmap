@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<title>Farbtabellen für HTML Files erstellen</title>
+</head>
+
+<body>
+<main>
+
+<h1>Anleitung zur Erstellung von Farbtabellen</h1>
+
+<h3 style="color:green;">Funktion =VERKETTEN </h3>
+<p>Mit der Funktion =VERKETTEN() können in Spreadsheet Programmen Spalten verknüpft und für die weitere Verarbeitung verwendet werden.
+</p>
+
+<h3 style="color:rgb(217,72,1)">Farbtabellen erstellen</h3>
+
+<ol>
+    <li>Homepage besuchen <a href="http://colorbrewer2.org/">http://colorbrewer2.org/</a></li>
+    <li>Downloadlink öffnen <a href="http://www.personal.psu.edu/cab38/ColorBrewer/ColorBrewer_RGB.html">ColorBrewer_RGB.html</a></li>
+    <li>Tabelle <a href="http://www.personal.psu.edu/cab38/ColorBrewer/ColorBrewer_all_schemes_RGBonly3.XLS">ColorBrewer_all_schemes_RGBonly3.XLS</a>  herunter laden und z.B. in LibreOffice bearbeiten</li>
+    <li>RGB-Werte in den Spalten G2,H2,I2 in Zelle K2 verketten:
+		<pre>=VERKETTEN("&lt;td style='background-color:rgb(";G2;",";H2;",";I2;")'&gt;&amp;nbsp&lt;/td&gt;")</pre></li>
+	
+	<li>Formel nach unten ziehen</li>
+	<li>Formel wird für alle unterschiedlichen Farbspektren erstellt</li>
+    <li>Tabellengerüst im HTML File erstellen und Zellen hinzufügen</li>
+	
+    <li> <p>Beispiele für neunfarbige Spektren:</p></li>
+
+        <table style="width:800px;height:30px;border: 1px solid black;"
+				onclick="alert(event.target.getAttribute('style'))">
+        <tr>
+            <td style='background-color:rgb(247,251,255)'>&nbsp</td>
+            <td style='background-color:rgb(222,235,247)'>&nbsp</td>
+            <td style='background-color:rgb(198,219,239)'>&nbsp</td>
+            <td style='background-color:rgb(158,202,225)'>&nbsp</td>
+            <td style='background-color:rgb(107,174,214)'>&nbsp</td>
+            <td style='background-color:rgb(66,146,198)'>&nbsp</td>
+            <td style='background-color:rgb(33,113,181)'>&nbsp</td>
+            <td style='background-color:rgb(8,81,156)'>&nbsp</td>
+            <td style='background-color:rgb(8,48,107)'>&nbsp</td>
+		</tr>
+        
+        <tr>
+            <td style='background-color:rgb(247,252,253)'>&nbsp</td>
+			<td style='background-color:rgb(229,245,249)'>&nbsp</td>
+			<td style='background-color:rgb(204,236,230)'>&nbsp</td>
+			<td style='background-color:rgb(153,216,201)'>&nbsp</td>
+			<td style='background-color:rgb(102,194,164)'>&nbsp</td>
+			<td style='background-color:rgb(65,174,118)'>&nbsp</td>
+			<td style='background-color:rgb(35,139,69)'>&nbsp</td>
+			<td style='background-color:rgb(0,109,44)'>&nbsp</td>
+			<td style='background-color:rgb(0,68,27)'>&nbsp</td>
+
+        </tr>
+        
+        <tr>
+            <td style='background-color:rgb(247,252,253)'>&nbsp</td>
+			<td style='background-color:rgb(224,236,244)'>&nbsp</td>
+			<td style='background-color:rgb(191,211,230)'>&nbsp</td>
+			<td style='background-color:rgb(158,188,218)'>&nbsp</td>
+			<td style='background-color:rgb(140,150,198)'>&nbsp</td>
+			<td style='background-color:rgb(140,107,177)'>&nbsp</td>
+			<td style='background-color:rgb(136,65,157)'>&nbsp</td>
+			<td style='background-color:rgb(129,15,124)'>&nbsp</td>
+			<td style='background-color:rgb(77,0,75)'>&nbsp</td>
+
+        </tr>
+        
+        <tr>
+            <td style='background-color:rgb(247,252,240)'>&nbsp</td>
+			<td style='background-color:rgb(224,243,219)'>&nbsp</td>
+			<td style='background-color:rgb(204,235,197)'>&nbsp</td>
+			<td style='background-color:rgb(168,221,181)'>&nbsp</td>
+			<td style='background-color:rgb(123,204,196)'>&nbsp</td>
+			<td style='background-color:rgb(78,179,211)'>&nbsp</td>
+			<td style='background-color:rgb(43,140,190)'>&nbsp</td>
+			<td style='background-color:rgb(8,104,172)'>&nbsp</td>
+			<td style='background-color:rgb(8,64,129)'>&nbsp</td>
+
+        </tr>
+       
+        <tr>
+            <td style='background-color:rgb(247,252,245)'>&nbsp</td>
+			<td style='background-color:rgb(229,245,224)'>&nbsp</td>
+			<td style='background-color:rgb(199,233,192)'>&nbsp</td>
+			<td style='background-color:rgb(161,217,155)'>&nbsp</td>
+			<td style='background-color:rgb(116,196,118)'>&nbsp</td>
+			<td style='background-color:rgb(65,171,93)'>&nbsp</td>
+			<td style='background-color:rgb(35,139,69)'>&nbsp</td>
+			<td style='background-color:rgb(0,109,44)'>&nbsp</td>
+			<td style='background-color:rgb(0,68,27)'>&nbsp</td>
+
+        </tr>
+       
+        <tr>
+            <td style='background-color:rgb(255,255,255)'>&nbsp</td>
+			<td style='background-color:rgb(240,240,240)'>&nbsp</td>
+			<td style='background-color:rgb(217,217,217)'>&nbsp</td>
+			<td style='background-color:rgb(189,189,189)'>&nbsp</td>
+			<td style='background-color:rgb(150,150,150)'>&nbsp</td>
+			<td style='background-color:rgb(115,115,115)'>&nbsp</td>
+			<td style='background-color:rgb(82,82,82)'>&nbsp</td>
+			<td style='background-color:rgb(37,37,37)'>&nbsp</td>
+			<td style='background-color:rgb(0,0,0)'>&nbsp</td>
+
+        </tr>
+		
+        <tr>
+            <td style='background-color:rgb(255,245,235)'>&nbsp</td>
+			<td style='background-color:rgb(254,230,206)'>&nbsp</td>
+			<td style='background-color:rgb(253,208,162)'>&nbsp</td>
+			<td style='background-color:rgb(253,174,107)'>&nbsp</td>
+			<td style='background-color:rgb(253,141,60)'>&nbsp</td>
+			<td style='background-color:rgb(241,105,19)'>&nbsp</td>
+			<td style='background-color:rgb(217,72,1)'>&nbsp</td>
+			<td style='background-color:rgb(166,54,3)'>&nbsp</td>
+			<td style='background-color:rgb(127,39,4)'>&nbsp</td>
+
+        </tr>
+        </table>
+    
+</ol>
+</main>
+</body>
+</html>
