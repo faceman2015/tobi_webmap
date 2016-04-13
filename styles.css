@@ -23,7 +23,7 @@ figcaption{color:blue;
 		text-align:left;
 }
 
-div {
+.box {
     background-color: #cce0ff;
     width: 700px;
     padding: 10px;
@@ -35,7 +35,7 @@ table{
 	box-shadow: 7px 7px 5px 0px rgba(50, 50, 50, 0.75);
 }
 
-img {width:700px;
+figure img {width:700px;
 	border-radius: 20px;
 	box-shadow: 7px 7px 5px 0px rgba(50, 50, 50, 0.75);
 	
