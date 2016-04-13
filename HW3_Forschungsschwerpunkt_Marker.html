@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Forschungsschwerpunkt Naturgefahrenforschung</title>
+		<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+		<link rel="stylesheet" href="styles.css" />
+		
+		<script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+    
+	</head>
+    <body>
+		<h1> Vertiefungsschwerpunkt Naturgefahrenforschung</h1>
+		
+        <p>In der Projektstudie "Erfassung des regionalen/lokalen Naturgefahrenrisikos" 
+		des Institutes für Geographie der Universität Innsbruck war es das Ziel, im Langtauferer Tal 
+		(Gemeinde Graun, Südtirol) eine Naturgefahrenanalyse gemäß der Südtiroler "Richtlinien zur Erstellung 
+		der Gefahrenzonenpläne (GZP) und zur Klassifizierung des spezifischen Risikos (KSR)"
+		durchzuführen.</p>
+		
+		 <p>
+		 <div id="map_graun" style="width:900px;height:600px"></div>
+		 </p>
+			
+			<script>
+				
+				var map = L.map('map_graun', {
+					center : [46.813806, 10.570000],
+					zoom : 14
+				});
+
+				L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+					attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap contributors</a>'
+				}).addTo(map);
+				
+				var marker1=L.marker([46.805619, 10.543464]).addTo(map);
+				marker1.bindPopup('<h2>Messpunkt 1</h2><img style="width:200px;" src="pictures_HP/Messpunkt1.jpg" title="Messpunkt 1" alt="Das Foto zeigt, wie der Messpunkt 1 von Studierenden eingemessen wird"/>')
+				
+				var marker2=L.marker([46.809144, 10.564885]).addTo(map);
+				marker2.bindPopup('<h2>Messpunkt 2</h2><img style="width:200px;" src="pictures_HP/Messpunkt2.jpg" title="Messpunkt 2" alt="Das Foto zeigt, wie der Messpunkt 2 von Studierenden eingemessen wird"/>')
+				
+				var marker3=L.marker([46.826015, 10.603299]).addTo(map);
+				marker3.bindPopup('<h2>Messpunkt 3</h2><img style="width:200px;" src="pictures_HP/Messpunkt3.jpg" title="Messpunkt 3" alt="Das Foto zeigt, wie der Messpunkt 3 von Studierenden eingemessen wird"/>')
+				
+				var marker4=L.marker([46.837423, 10.644757]).addTo(map);
+				marker4.bindPopup('<h2>Messpunkt 4</h2><img style="width:200px;" src="pictures_HP/Messpunkt4.jpg" title="Messpunkt 4" alt="Das Foto zeigt, wie der Messpunkt 4 von Studierenden eingemessen wird"/>')
+				
+				var marker5=L.marker([46.833392, 10.662472]).addTo(map);
+				marker5.bindPopup('<h2>Messpunkt 5</h2><img style="width:200px;" src="pictures_HP/Messpunkt5.jpg" title="Messpunkt 5" alt="Das Foto zeigt, wie der Messpunkt 5 von Studierenden eingemessen wird"/>')
+				
+				// create a red polyline from an array of LatLng points
+				var line = L.polyline([
+				[46.805619, 10.543464],
+				[46.809144, 10.564885],
+				[46.826015, 10.603299],
+				[46.837423, 10.644757],
+				[46.833392, 10.662472]
+				], {color: 'red', weight:'4px'}).addTo(map);
+
+				// zoom the map to the polyline
+				map.fitBounds(line.getBounds().pad(0.5));
+				
+				L.control.scale({
+				'imperial' : false
+				}).addTo(map);
+			
+			</script>
+			
+	
+<!--	<p><div id="karte" style="width:900px;height:600px"></div></p>
+	
+	<script>
+    var layers = { // http://www.basemap.at/wmts/1.0.0/WMTSCapabilities.xml
+            geolandbasemap : L.tileLayer("http://{s}.wien.gv.at/basemap/geolandbasemap/normal/google3857/{z}/{y}/{x}.png", {
+                subdomains : ['maps', 'maps1', 'maps2', 'maps3', 'maps4'],
+                attribution : 'Datenquelle: <a href="http://www.basemap.at/">basemap.at</a>'
+            }),
+            bmapoverlay : L.tileLayer("http://{s}.wien.gv.at/basemap/bmapoverlay/normal/google3857/{z}/{y}/{x}.png", {
+                subdomains : ['maps', 'maps1', 'maps2', 'maps3', 'maps4'],
+                attribution : 'Datenquelle: <a href="http://www.basemap.at/">basemap.at</a>'
+            }),
+            bmapgrau : L.tileLayer("http://{s}.wien.gv.at/basemap/bmapgrau/normal/google3857/{z}/{y}/{x}.png", {
+                subdomains : ['maps', 'maps1', 'maps2', 'maps3', 'maps4'],
+                attribution : 'Datenquelle: <a href="http://www.basemap.at/">basemap.at</a>'
+            }),
+            bmaphidpi : L.tileLayer("http://{s}.wien.gv.at/basemap/bmaphidpi/normal/google3857/{z}/{y}/{x}.jpeg", {
+                subdomains : ['maps', 'maps1', 'maps2', 'maps3', 'maps4'],
+                attribution : 'Datenquelle: <a href="http://www.basemap.at/">basemap.at</a>'
+            }),
+            bmaporthofoto30cm : L.tileLayer("http://{s}.wien.gv.at/basemap/bmaporthofoto30cm/normal/google3857/{z}/{y}/{x}.jpeg", {
+                subdomains : ['maps', 'maps1', 'maps2', 'maps3', 'maps4'],
+                attribution : 'Datenquelle: <a href="http://www.basemap.at/">basemap.at</a>'
+            })
+        };
+
+        var map_2 = L.map('karte', {
+            layers : [layers.geolandbasemap],
+            center : [47.264269, 11.385312],
+            zoom : 16
+        });
+
+        L.control.layers({
+            "Geoland Basemap" : layers.geolandbasemap,
+            "Geoland Basemap Overlay" : layers.bmapoverlay,
+            "Geoland Basemap Grau": layers.bmapgrau,
+            "Geoland Basemap High DPI" : layers.bmaphidpi,
+            "Geoland Basemap Orthofoto" : layers.bmaporthofoto30cm
+        }).addTo(map_2)
+
+        L.control.scale({
+            'imperial' : false
+        }).addTo(map_2);
+
+	</script>
+	-->
+	
+    
+		<p>In der Rubrik 
+			<a href="http://www.provinz.bz.it/natur-raum/gefahrenzonenplanung.asp">"Gefahrenzonenplanung"</a>
+			der Provinz Südtirol sind die genauen Gefahrenzonenrichtlinien einzusehen:<br/>
+			Richtlinien zur Erstellung der Gefahrenzonenpläne gemäß L.G. 13/97, Art. 22bis - Beschluss der Landesregierung vom 14. Mai 2012, Nr. 712. 
+			<a href="http://www.provinz.bz.it/natur-raum/download/GZP_BLR716_2012_Richtlinie_Amtsblatt22mai12.pdf">PDF-Link [1691 kb]</a>
+		</p>
+		<h2>Kombinationsmatrix der Gefahrenstufen für Wassergefahren und Massenbewegungen</h2>
+		<figure>
+			<img src="pictures_HP/Gefahrenstufenmatrix_Forschungsschwerpunkt.jpg" 
+				title="Gefahrenstufenmatrix"
+				alt="Matrix, in der die verschiedenen Gefahrenstufen angezeigt werden"> </a>
+			<figcaption> 
+			Quelle: Autonome Provinz Bozen 2012:16 nach BUWAL 1998
+			</figcaption>
+		</figure>
+		
+		<h2>Intensitäten und dazugehörige Überschwemmungshöhen</h2>
+		<table class="docs">
+			<tr class="fett">
+				<td>Prozess</td>
+				<td>niedrige Intensität</td>
+				<td>mittlere Intensität</td>
+				<td>hohe Intensität</td>
+			</tr>
+			<tr>
+				<td class="fett">Überschwemmung</td>
+				<td>h < 0,5m</td>
+				<td>h = 0,5-2m</td>
+				<td>h > 2m</td>
+			</tr>
+			<caption> Quelle: Autonome Provinz Bozen 2012: 22 (bearbeitet) </caption>
+		</table>
+		
+		<h2>Kombinationsmatrix zur Erstellung der Risikozonenkarte aus den Größen Gefahrenstufe 
+			und Schadensanfälligkeit</h2>
+		<figure>
+			<img src="pictures_HP/Spezifisches_Risiko_Forschungsschwerpunkt.jpg" 
+				title="Spezifisches Risiko"
+				alt="Matrix, in der die verschiedenen Risikostufen angezeigt werden"> </a>
+			<figcaption> Quelle: Autonome Provinz Bozen 2012: 29 </figcaption>
+		</figure>
+		
+		<div class="box"><p> Die Teilnehmer der Studie wurden in die Prozessgruppen Lawine, Steinschlag und Mure, Hydrologie 
+		und Hydraulik eingeteilt. Nach einer gemeinsamen Vorkartierung wurden im Rahmen eines 
+		Geländepraktikums die für die anschließende Modellierung relevanten Parameter im Gelände erhoben.</p></div>
+		
+		<h2>Kartierung im Gelände</h2>
+		<figure>
+			<img src="pictures_HP/Korngroessenverteilung_Forschungsschwerpunkt_KST25.jpg" 
+				title="Kartierung im Gelände"
+				alt="Das Foto zeigt mehrere Studierende, die in einem Flussbett mit Hilfe eines Meterbandes die Größe von Steinen messen"> </a>
+		</figure>
+		
+		<div class="box"><p>Die hydraulische Berechnung der Wassergefahren ist der Verbindungsteil zwischen hydrologischen 
+		Modellierungen und der Ausweisung von Überschwemmungsbereichen mit dazugehörigen Überschwemmungshöhen. 
+		Dazu wurden zwei hydrodynamisch-numerische Modelle angewendet und deren Ergebnisse im Anschluss 
+		kritisch hinterfragt. Einen Großteil der Diskussion macht die kritische 
+		Hinterfragung der Modelleingabeparameter aus, da diese die Modellergebnisse sehr stark beeinflussen.</p></div>
+		
+		<h2> Gegenüberstellung der wichtigsten Eigenschaften von FloodArea und HEC-RAS </h2>
+		<table class="docs" span="7">
+	
+                <tr>
+                    <td></td>
+                    <td><b>FloodArea<br/></b>(Geomer GmbH, Ruiz Rodriguez+Zeisler+Blank 2011)</td>
+					<td><b>HEC-RAS<br/></b>(US Army Corps of Engineers 2010A)</td>
+                </tr>
+				
+				<tr>
+                    <td class="fett">Räumlichkeit</td>
+                    <td>1,5D</td>
+					<td>1D</td>
+                </tr>
+				
+				<tr>
+                    <td class="fett">Berechnungsmethode</td>
+                    <td>Gauckler-Manning-Strickler Formel</td>
+					<td>Gauckler-Manning-Strickler Formel</td>
+                </tr>
+				
+				<tr>
+                    <td class="fett">mindest Inputparameter</td>
+                    <td>DGM und
+						Gewässernetz in Rasterform <b>oder</b> Punkte mit Ganglinien <b>oder</b> Berechnungsraster mit Ganglinien</td>
+					<td>mind. 2 Querprofile pro Gerinneabschnitt,
+						Angaben über Fließregime und Abflusswerte für jeweilige Knotenpunkte</td>
+                </tr>
+				
+				<tr>
+                    <td class="fett">zusätzliche Inputparameter</td>
+                    <td>Rauigkeitsraster, Fließhindernisse, Durchlässe</td>
+					<td>Fließhindernisse jeder Art, Geschiebeinformationen</td>
+                </tr>
+				
+				<tr>
+                    <td class="fett">zeitliche Variabilität</td>
+                    <td>Stationär / quasi Instationär / Instationär</td>
+					<td>Stationär / Instationär</td>
+                </tr>
+				
+				<tr>
+                    <td class="fett">Ergebnisse</td>
+                    <td>Überschwemmungshöhen in Rasterform</td>
+					<td>Wasserstand im Querprofil</td>
+                </tr>
+				
+				<tr>
+                    <td class="fett">Genauigkeit</td>
+                    <td>regionales Modell</td>
+					<td>durch Input gesteuert</td>
+                </tr>
+             
+            </table>
+			
+			
+			<div class="box"><p>Ziel der Modellierung ist es, Gefahrenhinweisbereiche gemäß der Gefahrenmatrizen der 
+			jeweiligen Prozesse auszuweisen.</p></div>
+			
+			<h2>Gefahrenhinweiskarte im Gemeindegebiet Graun (FloodArea)</h2>
+			<figure>
+			<img src="pictures_HP/Gefahrenhinweiskarte_FloodArea_Forschungsschwerpunkt.jpg" 
+				title="Gefahrenhinweiskarte (FloodArea)"
+				alt="Gefahrenhinweiskarte im Gemeindegebiet Graun - mit der Software FloodArea erstellt"> </a>
+			</figure>
+			
+			<h2>Gefahrenhinweiskarte im Gemeindegebiet Graun (HEC-RAS)</h2>
+			<figure>
+			<img src="pictures_HP/Gefahrenhinweiskarte_HEC_RAS_Forschungsschwerpunkt.jpg" 
+				title="Gefahrenhinweiskarte HEC-RAS"
+				alt="Gefahrenhinweiskarte im Gemeindegebiet Graun - mit der Software Hec-RAS erstellt"> </a>
+			</figure>
+			
+			<div class="box"><p>Im Anschluss daran werden diese Gefahrenhinweiskarten mit der Karte der Schadenanfälligkeit 
+			verschnitten um das spezifische Risiko zu ermitteln. Aus diesen Arbeiten werden am Ende 
+			relevante Bereiche, Hotspots, herausgearbeitet, die das Ziel weitergehender Arbeiten 
+			sein können.</p></div>
+			
+			<h2>Karte der Schadenanfälligkeit für das Gemeindegebiet Graun</h2>
+			<figure>
+			<img src="pictures_HP/Schadensanfaelligkeit_Graun_Foschungsschwerpunkt.jpg" 
+				title="Schadensanfälligkeit in Graun"
+				alt="Karte der Schadenanfälligkeit für das Gemeindegebiet Graun"> </a>
+			</figure>
+			
+			<h2>Karte des spezifischen Risikos für das Gemeindegebiet Graun (FloodArea)</h2>
+			<figure>
+			<img src="pictures_HP/Risikozonen_FloodArea_Foschungsschwerpunkt.jpg" 
+				title="Spezifisches Risiko (FloodArea)"
+				alt="Karte des spezifischen Risikos für das Gemeindegebiet Graun. Verwendete Software: FloodArea"> </a>
+			</figure>
+			
+			<h2>Karte des spezifischen Risikos für das Gemeindegebiet Graun (HEC-RAS)</h2>
+			<figure>
+			<img src="pictures_HP/Risikozonen_HEC-RAS_Foschungsschwerpunkt.jpg" 
+				title="Spezifisches Risiko (HEC-RAS)"
+				alt="Karte des spezifischen Risikos für das Gemeindegebiet Graun. Verwendete Software: HEC-RAS"> </a>
+			</figure>
+			
+			<h2>Karte der Hotspotbereiche für Überschwemmung im Langtauferer Tal</h2>
+			<figure>
+			<img src="pictures_HP/Hotspots_Ueberschwemmung_Forschungsschwerpunkt.jpg" 
+				title="Hotspotbereiche für Überschwemmung"
+				alt="Karte der Hotspotbereiche für Überschwemmung im Langtauferer Tal"> </a>
+			</figure>
+			
+			<div class="box" width="800px"><p>Anhand der Modellergebnisse konnten verschiedene hotspot-Bereiche im Langtauferer Tal ermittelt werden, 
+			die Gegenstand genauerer Untersuchungen sein könnten. Diese sind in der Karte der Hotspotbereiche ersichtlich und wurden 
+			in der Ergebnisdokumentation bereits aufgeführt. In diesen Bereichen lohnt sich eine detailliertere 
+			Modellierung, um festgestellte Unzulänglichkeiten in den Inputdaten ausbessern zu können. Sicherlich 
+			werden die Ergebnisse dadurch repräsentativer.</p></div>
+			
+			
+			
+<footer>
+<p style="text-align:center;font-size:0.9em;">Testseite für den Kurs: Web mapping, Sommersemster 2016</p>
+</footer>
+	</body>
+</html>
